@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- 
+      This is an HTML comment
+      You can write text in a comment and the content won't be visible in the page
+    -->
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+
+    <!--
+      This is the page head - it contains info the browser uses
+      Like the title, which appears on the browser tab but not inside the page
+      Further down you'll see the content that displays in the page
+    -->
+    <title>Drawing Machine</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- The website JavaScript file -->
+    <script src="/script.js" defer></script>
+    <script src="https://github.com/processing/p5.js/releases/download/v1.9.0/p5.min.js"></script>
+    <script>
+    
+let alphaVal = 127;
+let baseStrokeSize = 20;
+let alphaFade = 2;
+let spread = 40;
+function setup() {
+    createCanvas(400, 400);
+    background(0);
+}
+function draw() {
+    fill(0, alphaFade);
+    noStroke();
+    rect(0, 0, width, height);
+    if (mouseIsPressed) {
+        strokeWeight(baseStrokeSize);
+        stroke(255, 0, 0, alphaVal);
+        line(
+            mouseX + random(-spread, spread),
+            mouseY + random(-spread, spread),
+            pmouseX,
+            pmouseY
+        );
+        strokeWeight(baseStrokeSize / 2);
+        stroke(0, 255, 0, alphaVal);
+        line(mouseX, mouseY, pmouseX, pmouseY);
+        strokeWeight(baseStrokeSize / 4);
+        stroke(0, 255, 0);
+        line(mouseX, mouseY, pmouseX, pmouseY);
+    }
+}
+
+    </script>
+  </head>
+  <body>
+   
+  </body>
+</html>
